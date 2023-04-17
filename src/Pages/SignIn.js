@@ -12,7 +12,10 @@ const SignIn = () => {
           <div className="rightInnerContainer">
             <div className="signInTitle">Sign In</div>
             <div className="signInSubTitle">Sign in to your account</div>
-            <button onClick={() => loginWithRedirect()}>Log In</button>
+            <div className="authButtonContainer">
+              <button onClick={() => loginWithRedirect()}>Log In</button>
+            </div>
+            <form className="signInFormContainer"></form>
           </div>
         </div>
       </div>
