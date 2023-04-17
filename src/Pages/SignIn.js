@@ -1,9 +1,7 @@
 import React from "react";
 import "../CSS/signin.css";
-import { useAuth0 } from "@auth0/auth0-react";
 
 const SignIn = () => {
-  const { loginWithRedirect } = useAuth0();
   return (
     <>
       <div className="row">
@@ -13,9 +11,36 @@ const SignIn = () => {
             <div className="signInTitle">Sign In</div>
             <div className="signInSubTitle">Sign in to your account</div>
             <div className="authButtonContainer">
-              <button onClick={() => loginWithRedirect()}>Log In</button>
+              <button className="btn">Sign in with Google</button>
+              <button className="btn">
+                <div className="btnInnerContainer">
+                  <img
+                    src="/assets/AppleIcon.svg"
+                    alt="appleicon"
+                    className="appleIcon"
+                  />
+                  Sign in with Apple
+                </div>
+              </button>
             </div>
-            <form className="signInFormContainer"></form>
+            <form className="signInFormContainer">
+              <div className="label">Email address</div>
+              <input
+                type="email"
+                placeholder="john@example.com"
+                className="input"
+              />
+              <div className="label">Password</div>
+              <input
+                type="password"
+                placeholder="john@example.com"
+                className="input"
+              />
+              <div className="forgotPassword">Forgot password?</div>
+              <button type="submit" className="submitBtn">
+                Sign In
+              </button>
+            </form>
           </div>
         </div>
       </div>
