@@ -6,14 +6,13 @@ import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
   const [user, setUser] = useState({});
-
   return (
     <>
       <Router>
         <Routes>
-          <Route path="/" element={<SignIn user={user} setUser={setUser} />} />
+          {/* <Route path="/" element={<SignIn user={user} setUser={setUser} />} /> */}
           <Route
-            path="/dashboard"
+            path="/"
             element={<Dashboard user={user} setUser={setUser} />}
           />
         </Routes>
