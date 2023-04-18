@@ -1,7 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../CSS/signin.css";
+import { useNavigate } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 
-const SignIn = () => {
+const SignIn = ({ user, setUser }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleCallbackResponse = (response) => {
+    setUser(jwt_decode(response.credential));
+  };
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id:
+        "136067645138-rdbjjrtp1de3ij9hjevjsdnm4d8v8nv6.apps.googleusercontent.com",
+      callback: handleCallbackResponse,
+    });
+    google.accounts.id.renderButton(document.getElementById("signInBtn"), {
+      theme: "outline",
+      size: "large",
+    });
+    google.accounts.id.prompt();
+  }, []);
+
+  const handleSubmit = () => {
+    if (email === "keshav@gmail.com" && password === "keshav") {
+      navigate("/dashboard");
+    }
+  };
+  useEffect(() => {
+    if (Object.keys(user).length != 0) {
+      navigate("/dashboard");
+    }
+  }, [user]);
   return (
     <>
       <div className="row">
@@ -11,7 +44,7 @@ const SignIn = () => {
             <div className="signInTitle">Sign In</div>
             <div className="signInSubTitle">Sign in to your account</div>
             <div className="authButtonContainer">
-              <button className="btn">Sign in with Google</button>
+              <div id="signInBtn"></div>
               <button className="btn">
                 <div className="btnInnerContainer">
                   <img
@@ -29,18 +62,30 @@ const SignIn = () => {
                 type="email"
                 placeholder="john@example.com"
                 className="input"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <div className="label">Password</div>
               <input
                 type="password"
-                placeholder="john@example.com"
+                placeholder="password"
                 className="input"
+                onChange={(e) => setPassword(e.target.value)}
               />
               <div className="forgotPassword">Forgot password?</div>
-              <button type="submit" className="submitBtn">
+              <button
+                type="submit"
+                className="submitBtn"
+                onClick={handleSubmit}
+              >
                 Sign In
               </button>
             </form>
+            <div className="title">
+              Don't have an account?{" "}
+              <span style={{ color: "#346BD4", cursor: "pointer" }}>
+                Register here
+              </span>
+            </div>
           </div>
         </div>
       </div>
