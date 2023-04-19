@@ -1,5 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Card from "../Component/Card";
+import Header from "../Component/Header";
+import Grid from "@mui/material/Grid";
+import "../CSS/dashboard.css";
 
 const Dashboard = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -14,7 +18,15 @@ const Dashboard = ({ user, setUser }) => {
   }, [user]);
   return (
     <>
-      <button onClick={signout}>Sign out</button>
+      <Grid container className="container">
+        <Grid item xs={12} md={12} lg={3}>
+          Sidebar
+        </Grid>
+        <Grid item xs={12} md={12} lg={9}>
+          <Header />
+          <Card />
+        </Grid>
+      </Grid>
     </>
   );
 };
