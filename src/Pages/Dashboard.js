@@ -46,10 +46,10 @@ const Dashboard = ({ user, setUser }) => {
     <>
       <div className="container">
         <Grid container>
-          <Grid item xs={12} md={12} lg={2.3}>
+          <Grid item xs={12} md={12} lg={2.5}>
             <Sidebar />
           </Grid>
-          <Grid item xs={12} md={12} lg={9.7}>
+          <Grid item xs={12} md={12} lg={9.5}>
             <Header />
             <Card />
             <ActivitiesCard />
