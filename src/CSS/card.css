@@ -2,10 +2,11 @@
   display: flex;
   margin: 40px 0px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .cardContainer {
   height: 120px;
-  width: 200px;
+  width: 221.05px;
   border-radius: 20px;
   padding: 20px;
   display: flex;

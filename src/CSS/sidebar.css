@@ -4,6 +4,10 @@
   padding: 40px 35px;
   height: calc(100vh - 80px);
   width: 280px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
+  left: 40px;
 }
 
 .sidebarTitle {
