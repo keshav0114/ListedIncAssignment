@@ -1,9 +1,13 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Card from "../Component/Card";
-import Header from "../Component/Header";
-import Grid from "@mui/material/Grid";
 import "../CSS/dashboard.css";
+import Sidebar from "../Components/Sidebar";
+import Card from "../Components/Card";
+import ActivitiesCard from "../Components/ActivitiesCard";
+import Header from "../Components/Header";
+import Schedule from "../Components/Schedule";
+import TopProduct from "../Components/TopProduct";
+import Grid from "@mui/material/Grid";
 
 const Dashboard = ({ user, setUser }) => {
   const navigate = useNavigate();
@@ -20,11 +24,20 @@ const Dashboard = ({ user, setUser }) => {
     <>
       <Grid container className="container">
         <Grid item xs={12} md={12} lg={3}>
-          Sidebar
+          <Sidebar />
         </Grid>
         <Grid item xs={12} md={12} lg={9}>
           <Header />
           <Card />
+          <ActivitiesCard />
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <TopProduct />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Schedule />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </>

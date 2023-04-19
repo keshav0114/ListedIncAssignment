@@ -6,7 +6,6 @@ import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
   const [user, setUser] = useState({});
-
   return (
     <>
       <Router>
