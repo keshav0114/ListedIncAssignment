@@ -3,13 +3,18 @@ import "../CSS/signin.css";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 
-const SignIn = ({ user, setUser }) => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sessionUser, setSessionUser] = useState("");
   const navigate = useNavigate();
 
   const handleCallbackResponse = (response) => {
-    setUser(jwt_decode(response.credential));
+    setSessionUser(jwt_decode(response.credential));
+    sessionStorage.setItem(
+      "user",
+      JSON.stringify(jwt_decode(response.credential))
+    );
   };
   useEffect(() => {
     /* global google */
@@ -28,13 +33,15 @@ const SignIn = ({ user, setUser }) => {
   const handleSubmit = () => {
     if (email === "keshav@gmail.com" && password === "keshav") {
       navigate("/dashboard");
+      setSessionUser({ email: email });
+      sessionStorage.setItem("user", JSON.stringify(sessionUser));
     }
   };
   useEffect(() => {
-    if (Object.keys(user).length != 0) {
+    if (Object.keys(sessionUser).length != 0) {
       navigate("/dashboard");
     }
-  }, [user]);
+  }, [sessionUser]);
   return (
     <>
       <div className="row">

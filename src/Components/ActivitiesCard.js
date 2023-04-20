@@ -8,6 +8,7 @@ import {
   Title,
   CategoryScale,
   Legend,
+  Tooltip,
 } from "chart.js";
 import { ReactComponent as Arrow } from "../SvgIcons/DownArrow.svg";
 
@@ -17,7 +18,8 @@ ChartJS.register(
   LinearScale,
   Title,
   CategoryScale,
-  Legend
+  Legend,
+  Tooltip
 );
 
 const ActivitiesCard = () => {

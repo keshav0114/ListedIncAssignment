@@ -6,13 +6,16 @@ import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
   const [user, setUser] = useState({});
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
   return (
     <>
       <Router>
         <Routes>
-          {/* <Route path="/" element={<SignIn user={user} setUser={setUser} />} /> */}
+          <Route path="/" element={<SignIn user={user} setUser={setUser} />} />
           <Route
-            path="/"
+            path="/dashboard"
             element={<Dashboard user={user} setUser={setUser} />}
           />
         </Routes>

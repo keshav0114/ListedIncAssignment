@@ -81,9 +81,8 @@ const TopProduct = () => {
             }}
           >
             {data.map((item, index) => (
-              <>
+              <div key={index}>
                 <div
-                  key={index}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -96,7 +95,7 @@ const TopProduct = () => {
                   <div className="productLabel">{item.title}</div>
                 </div>
                 <div className="percentage">{item.percentage}</div>
-              </>
+              </div>
             ))}
           </div>
         </div>

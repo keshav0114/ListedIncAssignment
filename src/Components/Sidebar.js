@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/sidebar.css";
 import { ReactComponent as Dashboard } from "../SvgIcons/dashboard_icon.svg";
 import { ReactComponent as Schedule } from "../SvgIcons/schedule_icon.svg";
@@ -7,6 +7,7 @@ import { ReactComponent as Transaction } from "../SvgIcons/transaction_icon.svg"
 import { ReactComponent as User } from "../SvgIcons/user_icon.svg";
 
 const Sidebar = () => {
+  const [selected, setSelected] = useState("Dashboard");
   const data = [
     {
       title: "Dashboard",
@@ -36,9 +37,21 @@ const Sidebar = () => {
         <div className="sidebarInnerContainer">
           <div>
             {data.map((item, index) => (
-              <div className="sidebarTitleContainer" key={index}>
+              <div
+                className="sidebarTitleContainer"
+                key={index}
+                onClick={() => setSelected(item.title)}
+                s
+              >
                 <item.icon />
-                <div className="sidebarNavigationTitle">{item.title}</div>
+                <div
+                  className="sidebarNavigationTitle"
+                  style={{
+                    fontWeight: selected === item.title ? "700" : "400",
+                  }}
+                >
+                  {item.title}
+                </div>
               </div>
             ))}
           </div>

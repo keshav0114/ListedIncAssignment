@@ -1,7 +1,10 @@
 import React from "react";
 import "../CSS/header.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const sessionUser = JSON.parse(sessionStorage.getItem("user"));
   return (
     <>
       <div className="headerContainer">
@@ -20,11 +23,18 @@ const Header = () => {
             />
           </div>
           <img
-            src="/assets/Notification.svg"
+            src="assets/Notification.svg"
             alt="notification"
             className="notificationIcon"
           />
-          <img src="/assets/Profile.svg" />
+          <img
+            src={sessionUser?.picture || "assets/Profile.svg"}
+            className="profilePicture"
+            onClick={() => {
+              sessionStorage.removeItem("user");
+              navigate("/");
+            }}
+          />
         </div>
       </div>
     </>
